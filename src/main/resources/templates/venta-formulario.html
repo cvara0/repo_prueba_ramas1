@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragmento/head :: head"></head>
+<body>
+
+<header th:replace="fragmento/header :: header"></header>
+
+    <main>
+        <div class="container mb-3">
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label for="cliente">Seleccionar Cliente</label>
+                    <select id="cliente" class="form-select" aria-label="Seleccionar cliente" required>
+                        <option selected value="">Cliente</option>
+                        <option selected value="">Cliente2</option>
+                        <option selected value="">Cliente3</option>
+                    </select>
+                </div>
+
+                <div class="col-6 mb-2">
+                    <label for="anticipo">Ingresar Anticipo (0.00)</label>
+                    <div class="input-group mb-3" id="anticipo">
+                        <input type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <label for="tabla_ingreso">Productos Seleccionados</label>
+                <table id="tabla_ingreso" class="table table-hover table-bordered table-striped">
+                    <thead>
+                    <tr class="table-primary">
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td >Producto1</td>
+                            <td >6500.00</td>
+                            <td >
+                                <input type="number" class="form-control" value="1">
+                            </td>
+                            <td>
+                                <form th:action="" method="post">
+                                    <button class="btn btn-danger" type="submit">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >Producto2</td>
+                            <td >8500.00</td>
+                            <td >
+                                <input type="number" class="form-control" value="1">
+                            </td>
+                            <td>
+                                <form th:action="" method="post">
+                                    <button class="btn btn-danger" type="submit">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row mb-3">
+
+                    <label for="seleccionar_producto">Agregar Productos</label>
+                    <div class="col-6 mb-3 input-group" id="seleccionar_producto">
+                        <select class="form-select" aria-label="Seleccionar cliente" required>
+                            <option selected value="">Producto3</option>
+                            <option selected value="">Producto4</option>
+                            <option selected value="">Producto5</option>
+                        </select>
+                        <button class="btn btn-outline-secondary" type="button">Agregar</button>
+                    </div>
+                    <label for="total">Precio Total</label>
+                    <div class="col-6 mb-3 input-group" id="total">
+                        <input class="form-control" aria-label="Seleccionar cliente" disabled value="5000">
+                        <button class="btn btn-outline-secondary" type="button">Calcular Total</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary"> Mostrar Resumen </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

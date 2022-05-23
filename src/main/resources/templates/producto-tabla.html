@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmento/head :: head"></head>
+
+<body>
+<header th:replace="fragmento/header :: header"></header>
+
+<main>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <div th:if="${exito}" th:text="${exito}" class="alert alert-success" role="alert"></div>
+
+                <div th:if="${producto.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+                    Ingrese productos.
+                    <a th:href="@{/producto/formulario}" class="alert-link">Agregar Producto</a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <div th:unless="${producto.isEmpty()}" class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr class="table-dark">
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Actualizar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="p : ${producto}">
+                            <td th:text="${p.name}"></td>
+                            <td th:text="${p.surname}"></td>
+                            <td><a class="btn btn-warning" th:href="@{/producto/formulario/__${p.id}__}">Actualizar</a></td>
+                            <td>
+                                <form th:action="@{/producto/eliminar/__${producto.id}__}"
+                                      method="post">
+                                    <button th:class="btn btn-danger" type="submit">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
